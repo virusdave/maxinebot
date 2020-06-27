@@ -1,0 +1,31 @@
+load("//rules:scala.bzl", "scala_library", "scala_binary", "scala_test", "scala_repl")
+
+scala_library(
+    name = "helloworld-lib",
+    srcs = glob(["HelloWorld.scala"]),
+    deps = [
+    ],
+)
+
+scala_binary(
+    name = "helloworld",
+    srcs = ["HelloWorldMain.scala"],
+    deps = [
+        ":helloworld-lib",
+    ],
+    main_class = "experimental.HelloWorldMain",
+)
+
+scala_test(
+    name = "helloworld-test",
+    srcs = ["HelloWorldTest.scala"],
+    deps = [
+        ":helloworld-lib",
+        "@thirdparty_jvm//:org_scalactic_scalactic_2_12",
+        "@thirdparty_jvm//:org_scalatest_scalatest_2_12",
+        "@thirdparty_jvm//:org_scalatest_scalatest_compatible",
+        "@thirdparty_jvm//:org_scalatest_scalatest_core_2_12",
+        "@thirdparty_jvm//:org_scalatest_scalatest_flatspec_2_12",
+        "@thirdparty_jvm//:org_scalatest_scalatest_shouldmatchers_2_12",
+    ],
+)
