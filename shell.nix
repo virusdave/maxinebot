@@ -3,7 +3,8 @@
 with pkgs;
 
 let
- project_name = "anonymous";
+  /* Mastering time & space, improving our customers' lives */
+  project_name = "gallifrey";
 
 in mkShell {
   buildInputs = [
