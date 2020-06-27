@@ -3,6 +3,30 @@ load("@bazel_tools//tools/build_defs/repo:http.bzl", "http_archive")
 # TODO(Dave): Reorganize this file in some sensible fashion
 
 ####################################################################################################
+# JVM 3rdparty dependencies
+#--------------------------------------------------------------------------------------------------#
+load("@bazel_tools//tools/build_defs/repo:http.bzl", "http_archive")
+
+RULES_JVM_EXTERNAL_TAG = "3.0"
+RULES_JVM_EXTERNAL_SHA = "62133c125bf4109dfd9d2af64830208356ce4ef8b165a6ef15bbff7460b35c3a"
+
+http_archive(
+    name = "rules_jvm_external",
+    strip_prefix = "rules_jvm_external-%s" % RULES_JVM_EXTERNAL_TAG,
+    sha256 = RULES_JVM_EXTERNAL_SHA,
+    url = "https://github.com/bazelbuild/rules_jvm_external/archive/%s.zip" % RULES_JVM_EXTERNAL_TAG,
+)
+
+load("//3rdparty/jvm:workspace.bzl", "thirdparty_jvm_dependencies")
+thirdparty_jvm_dependencies()
+load("@thirdparty_jvm//:defs.bzl", "pinned_maven_install")
+# To update the pinned dependencies, use:
+# $ ./bazel run @unpinned_thirdparty_jvm//:pin
+pinned_maven_install()
+####################################################################################################
+
+
+####################################################################################################
 # Scala support, via higherkindness
 #--------------------------------------------------------------------------------------------------#
 # Load rules scala annex
