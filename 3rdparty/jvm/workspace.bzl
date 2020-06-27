@@ -1,28 +1,106 @@
 load("@rules_jvm_external//:defs.bzl", "maven_install")
 
+# To update the pinned dependencies, use:
+# $ ./bazel run @unpinned_thirdparty_jvm//:pin
+
+# TODO(Dave): Would really like a much nicer way of specifying these, which would have the nicer
+# effect of also giving me aesthetic aliases for complete bundles in a local BUILD file.  Would
+# also really like a way to do automatic version updates / consistent version resolutions across
+# the repository
+#
+# Something like this:
+#  https://github.com/johnynek/bazel-deps
+# which seems to be at least somewhat supported in the standard rules_scala
 def artifacts():
     return [
-#        "org.scala-sbt:compiler-interface:1.2.1",
-#        "org.scala-lang.modules:scala-xml_2.12:1.0.6",
-#        "org.scalacheck:scalacheck_2.12:1.13.4",
-#        "org.scalacheck:scalacheck_2.11:1.13.4",
-#        "org.specs2:specs2-matcher_2.12:4.0.3",
-#        "org.specs2:specs2-common_2.12:4.0.3",
-#        "org.specs2:specs2-core_2.12:4.0.3",
-#        "org.specs2:specs2-matcher_2.11:3.9.5",
-#        "org.specs2:specs2-common_2.11:3.9.5",
-#        "org.specs2:specs2-core_2.11:3.9.5",
-#        "com.thesamet.scalapb:scalapb-runtime_2.12:0.9.0",
-#        "com.thesamet.scalapb:lenses_2.12:0.9.0",
-#        "com.google.protobuf:protobuf-java:3.9.0",
-#        "org.scalatest:scalatest_2.12:3.0.4",
-#        "org.scalactic:scalactic_2.12:3.0.4",
+        ##############################################
+        # Simple logging
+        #---------------------------------------------
+        "org.slf4j:slf4j-api:1.7.5",
+        "org.slf4j:slf4j-simple:1.7.5",
+        ##############################################
+
+        ##############################################
+        # Enumeratum, of course
+        #---------------------------------------------
+        "com.beachape:enumeratum_2.12:1.6.1",
+        # ... and supporting libraries
+        "com.beachape:enumeratum-circe_2.12:1.6.1",
+        ##############################################
+
+        ##############################################
+        # Kantan, for CSV
+        #---------------------------------------------
+        #"com.nrinaudo:kantan.csv_2.12:0.6.1",
+        #"com.nrinaudo:kantan.csv-cats_2.12:0.6.1",
+        #"com.nrinaudo:kantan.csv-enumeratum_2.12:0.6.1",
+        #"com.nrinaudo:kantan.csv-generic_2.12:0.6.1",
+        # (if performance becomes an issue)
+        #"com.nrinaudo:kantan.csv-jackson_2.12:0.6.1",
+        ##############################################
+
+        ##############################################
+        # Tapir, for HTTP serving
+        #---------------------------------------------
+        #"com.softwaremill.sttp.tapir:tapir-core_2.12:0.16.1",
+        ##############################################
+
+        ##############################################
+        # ZIO
+        #---------------------------------------------
+        "dev.zio:zio_2.12:1.0.3",
+        "dev.zio:zio-interop-cats_2.12:2.2.0.1",
+        ##############################################
+
+        ##############################################
+        # UZHttp, for simple HTTP serving
+        #---------------------------------------------
+        #"org.polynote:uzhttp_2.12:0.2.5",
+        ##############################################
+
+        ##############################################
+        # http4s for HTTP serving, of course
+        #---------------------------------------------
+        #"org.http4s:http4s-dsl_2.12:0.21.6",
+        ## ...and supporting libraries
+        #"org.http4s:http4s-blaze-client_2.12:0.21.6",
+        #"org.http4s:http4s-blaze-server_2.12:0.21.6",
+        #"org.http4s:http4s-circe_2.12:0.21.6",
+        ##############################################
+
+        ##############################################
+        # Circe, for JSON handling
+        #---------------------------------------------
+        "io.circe:circe-generic_2.12:0.13.0",
+        ##############################################
+
+        ##############################################
+        # Cats, of course.  We love FP.
+        #---------------------------------------------
+        "org.typelevel:cats-core_2.12:2.3.1",
+        "org.typelevel:cats-effect_2.12:2.3.1",
+        ##############################################
     ]
 
 def test_artifacts():
     return [
+        ##############################################
+        # Scalacheck
+        #---------------------------------------------
         "org.scalacheck:scalacheck_2.12:1.13.4",
-        "org.scalatest:scalatest_2.12:3.0.4",
+        ##############################################
+
+        ##############################################
+        # Scalatest
+        #---------------------------------------------
+        "org.scalatest:scalatest_2.12:3.2.3",
+        ##############################################
+
+        ##############################################
+        # ZIO test
+        #---------------------------------------------
+        "dev.zio:zio-test_2.12:1.0.3",
+        ##############################################
     ]
 
 def thirdparty_jvm_dependencies():

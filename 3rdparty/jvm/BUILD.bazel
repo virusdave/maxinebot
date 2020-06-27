@@ -1,0 +1,60 @@
+load("//rules:scala.bzl", "scala_library")
+
+# Produced via:
+#  ./bazel query 'kind("jvm_import", @thirdparty_jvm//...)' | grep thirdparty | sort
+scala_library(
+    name = "all_3rdparty_deps",
+    srcs = [],
+    deps = [
+        "@thirdparty_jvm//:com_beachape_enumeratum_2_12",
+        "@thirdparty_jvm//:com_beachape_enumeratum_circe_2_12",
+        "@thirdparty_jvm//:com_beachape_enumeratum_macros_2_12",
+        "@thirdparty_jvm//:com_chuusai_shapeless_2_12",
+        "@thirdparty_jvm//:dev_zio_izumi_reflect_2_12",
+        "@thirdparty_jvm//:dev_zio_izumi_reflect_thirdparty_boopickle_shaded_2_12",
+        "@thirdparty_jvm//:dev_zio_zio_2_12",
+        "@thirdparty_jvm//:dev_zio_zio_interop_cats_2_12",
+        "@thirdparty_jvm//:dev_zio_zio_stacktracer_2_12",
+        "@thirdparty_jvm//:dev_zio_zio_streams_2_12",
+        "@thirdparty_jvm//:io_circe_circe_core_2_12",
+        "@thirdparty_jvm//:io_circe_circe_generic_2_12",
+        "@thirdparty_jvm//:io_circe_circe_numbers_2_12",
+        "@thirdparty_jvm//:org_portable_scala_portable_scala_reflect_2_12",
+        "@thirdparty_jvm//:org_scala_lang_modules_scala_xml_2_12",
+        "@thirdparty_jvm//:org_scala_lang_scala_library",
+        "@thirdparty_jvm//:org_scala_lang_scala_reflect",
+        "@thirdparty_jvm//:org_slf4j_slf4j_api",
+        "@thirdparty_jvm//:org_slf4j_slf4j_simple",
+        "@thirdparty_jvm//:org_typelevel_cats_core_2_12",
+        "@thirdparty_jvm//:org_typelevel_cats_effect_2_12",
+        "@thirdparty_jvm//:org_typelevel_cats_kernel_2_12",
+        "@thirdparty_jvm//:org_typelevel_macro_compat_2_12",
+        "@thirdparty_jvm//:org_typelevel_simulacrum_scalafix_annotations_2_12",
+    ],
+)
+
+scala_library(
+    name = "all_3rdparty_test_deps",
+    srcs = [],
+    deps = [
+        "@thirdparty_jvm//:dev_zio_zio_test_2_12",
+        "@thirdparty_jvm//:org_scala_sbt_test_interface",
+        "@thirdparty_jvm//:org_scalacheck_scalacheck_2_12",
+        "@thirdparty_jvm//:org_scalactic_scalactic_2_12",
+        "@thirdparty_jvm//:org_scalatest_scalatest_2_12",
+        "@thirdparty_jvm//:org_scalatest_scalatest_compatible",
+        "@thirdparty_jvm//:org_scalatest_scalatest_core_2_12",
+        "@thirdparty_jvm//:org_scalatest_scalatest_diagrams_2_12",
+        "@thirdparty_jvm//:org_scalatest_scalatest_featurespec_2_12",
+        "@thirdparty_jvm//:org_scalatest_scalatest_flatspec_2_12",
+        "@thirdparty_jvm//:org_scalatest_scalatest_freespec_2_12",
+        "@thirdparty_jvm//:org_scalatest_scalatest_funspec_2_12",
+        "@thirdparty_jvm//:org_scalatest_scalatest_funsuite_2_12",
+        "@thirdparty_jvm//:org_scalatest_scalatest_matchers_core_2_12",
+        "@thirdparty_jvm//:org_scalatest_scalatest_mustmatchers_2_12",
+        "@thirdparty_jvm//:org_scalatest_scalatest_propspec_2_12",
+        "@thirdparty_jvm//:org_scalatest_scalatest_refspec_2_12",
+        "@thirdparty_jvm//:org_scalatest_scalatest_shouldmatchers_2_12",
+        "@thirdparty_jvm//:org_scalatest_scalatest_wordspec_2_12",
+    ],
+)
