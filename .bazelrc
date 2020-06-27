@@ -17,3 +17,14 @@ build --strategy=ScalaCompile=worker
 # (Can be overridden by appending `--define=scala_deps_used=off` to the build command)
 build --define=scala_deps_used=off
 ################################################################################
+
+################################################################################
+# Bazel caching flags
+#-------------------------------------------------------------------------------
+
+# Enable local persistent disk cache
+build --disk_cache=~/.bazel/cache
+
+# Prevent concurrent modification from poisoning the build cache
+build --experimental_guard_against_concurrent_changes
+################################################################################
