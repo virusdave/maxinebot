@@ -8,6 +8,7 @@ scala_library(
     ),
     visibility = ["//visibility:public"],
     deps = [
+        "//virusdave/ops",
         "//virusdave/zio/iterable",
         "@thirdparty_jvm//:dev_zio_zio_2_12",
     ],
