@@ -30,5 +30,11 @@ trait IterableOps {
       }.unzip
       (lhs.flatten.to[Collection], rhs.flatten.to[Collection])
     }
+
+    // Better naming
+    def keepIf(pred: Z => Boolean)(implicit cbf1: CanBuildFrom[Nothing, Z, Collection[Z]]): Collection[Z] =
+      in.filter(pred).to[Collection]
+    def dropIf(pred: Z => Boolean)(implicit cbf1: CanBuildFrom[Nothing, Z, Collection[Z]]): Collection[Z] =
+      in.filterNot(pred).to[Collection]
   }
 }
