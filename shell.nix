@@ -18,7 +18,8 @@ in mkShell {
     python3
     which
   ] ++ lib.optionals stdenv.isDarwin [
-    (xcbuild.override { sdkVer = "10.15"; })
+    #(xcbuild.override { sdkVer = "10.15"; })  # No longer present in newer XCodes
+    (xcbuild.override { sdkVer = "11.1"; })
   ];
 
   name = "${project_name}-build-nix-shell";
