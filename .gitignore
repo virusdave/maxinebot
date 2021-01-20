@@ -10,3 +10,9 @@
 # OSX-related crap
 .DS_Store
 
+# Configuration files, if any
+config.cfg
+
+# Metals & VS Code stuff.
+.metals/
+.vscode/
