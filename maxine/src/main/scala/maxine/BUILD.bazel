@@ -1,0 +1,12 @@
+load("//rules:scala.bzl", "scala_binary", "scala_library")
+
+scala_library(
+    name = "maxine",
+    srcs = ["package.scala"],
+    visibility = ["//visibility:public"],
+    deps = [
+        "//virusdave/ops",
+        "//virusdave/zio/ops",
+    ],
+)
+
