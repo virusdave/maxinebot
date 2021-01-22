@@ -11,6 +11,7 @@ scala_library(
         "//virusdave/ops",
         "//virusdave/zio/iterable",
         "@thirdparty_jvm//:dev_zio_zio_2_12",
+        "@thirdparty_jvm//:dev_zio_zio_logging_2_12",
     ],
 )
 
